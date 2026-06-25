@@ -11,12 +11,14 @@ import { useRef, useState } from "react";
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
+  const [ended, setEnded] = useState(false);
 
   const handleStart = () => {
     if (videoRef.current) {
       videoRef.current.muted = false;
       videoRef.current.play();
       setStarted(true);
+      setEnded(false);
     }
   };
 
@@ -38,10 +40,10 @@ export default function Home() {
         {/* VIDEO */}
         <video
           ref={videoRef}
-          loop
           muted
           playsInline
           preload="auto"
+          onEnded={() => setEnded(true)}
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/video/intro.mp4" type="video/mp4" />
@@ -51,7 +53,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/10 z-10" />
 
         {/* CLICK TO START SCREEN */}
-        {!started && (
+        {(!started || ended) && (
           <div
             onClick={handleStart}
             className="absolute inset-0 z-30 flex flex-col items-center justify-center cursor-pointer bg-black/50"
@@ -62,7 +64,7 @@ export default function Home() {
               </svg>
             </div>
             <p className="text-white text-lg font-semibold tracking-widest uppercase">
-              Click to Enter
+              {ended ? 'Click to Replay' : 'Click to Enter'}
             </p>
           </div>
         )}
