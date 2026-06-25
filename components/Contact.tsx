@@ -78,19 +78,37 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.MouseEvent) => {
+  const handleSubmit = async (e: React.MouseEvent) => {
     e.preventDefault()
     if (!form.name || !form.email || !form.message) return
     setStatus('sending')
-    // Opens Gmail compose with pre-filled content
-    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`)
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)
-    window.open(`mailto:njkanchi@gmail.com?subject=${subject}&body=${body}`, '_blank')
-    setTimeout(() => {
-      setStatus('sent')
-      setForm({ name: '', email: '', message: '' })
-      setTimeout(() => setStatus('idle'), 4000)
-    }, 500)
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '8d5b89d0-5764-4847-9205-c7798f56508c',
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          subject: `Portfolio Contact from ${form.name}`,
+        }),
+      })
+
+      const data = await response.json()
+      if (data.success) {
+        setStatus('sent')
+        setForm({ name: '', email: '', message: '' })
+        setTimeout(() => setStatus('idle'), 4000)
+      } else {
+        setStatus('idle')
+        alert('Something went wrong. Please try again.')
+      }
+    } catch {
+      setStatus('idle')
+      alert('Something went wrong. Please try again.')
+    }
   }
 
   return (
