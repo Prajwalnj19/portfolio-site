@@ -111,7 +111,7 @@ export default function Projects() {
   const projects = [
     {
       title: 'Pneumonia Detection',
-      image: '/projects/pneumonia.png',
+      image: '/Projects/pneumonia.png',
       tech: 'CNN • Deep Learning',
       desc: 'AI model for detecting pneumonia using medical imaging.',
       year: '2025',
@@ -119,7 +119,7 @@ export default function Projects() {
     },
     {
       title: 'Face Attendance System',
-      image: '/projects/attendance.png',
+      image: '/Projects/attendance.png',
       tech: 'Python • OpenCV • Face Recognition',
       desc: 'AI-powered attendance management system that automatically identifies individuals and marks attendance in real time using face recognition.',
       year: '2025',
@@ -127,7 +127,7 @@ export default function Projects() {
     },
     {
       title: 'Gesture Controlled Virtual Mouse',
-      image: '/projects/mouse.png',
+      image: '/Projects/mouse.png',
       tech: 'Python • OpenCV • MediaPipe',
       desc: 'Real-time virtual mouse that enables cursor control and click actions through hand gestures captured via a webcam.',
       year: '2025',
@@ -135,7 +135,7 @@ export default function Projects() {
     },
     {
       title: 'Traffic Sign Detection',
-      image: '/projects/traffic.png',
+      image: '/Projects/traffic.png',
       tech: 'Computer Vision',
       desc: 'Traffic sign recognition using deep learning.',
       year: '2025',

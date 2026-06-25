@@ -274,7 +274,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="reveal reveal-delay-1 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/25 transition duration-300 backdrop-blur-sm">
               <div className="flex items-center gap-4">
-                <span className="text-3xl">☕</span>
+                <span className="text-3xl">⚙️</span>
                 <div>
                   <h4 className="text-lg font-extrabold text-white">Full Stack Java</h4>
                   <p className="text-sm text-white/50 mt-0.5">Wipro</p>
